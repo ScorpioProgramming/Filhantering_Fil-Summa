@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
 namespace Filhantering_Fil_Summa
@@ -17,7 +13,8 @@ namespace Filhantering_Fil_Summa
             StreamWriter sw_sum = new StreamWriter("Summa.txt");
 
             int sum = 0;
-            int fsum = 0;
+            int fsum = 0; 
+            int fasum = 0;
             string row = "";
             
             for (int i = 0; i < fs.Length / 4; i++)
@@ -25,7 +22,7 @@ namespace Filhantering_Fil_Summa
                 int num = br.ReadInt32();
                 sum += num;
                 sw.WriteLine(num);
-                Console.WriteLine(num);
+                // Console.WriteLine(num);
             }
 
             sw.Close();
@@ -40,17 +37,109 @@ namespace Filhantering_Fil_Summa
                     fsum += 1;
                 }
             }
-            
-            sw_sum.WriteLine(sum);
-            sw_sum.WriteLine(fsum);
+
+            sr.Close();
+
+            StreamReader sr1 = new StreamReader("talfil.txt");
+
+            for (int i = 0; i < fs.Length / 4; i++)
+            {
+                row = sr1.ReadLine();
+                if (row == "5")
+                {
+                    fasum += 1;
+                }
+                else if (row == "15")
+                {
+                    fasum += 1;
+                }
+                else if (row == "25")
+                {
+                    fasum += 1;
+                }
+                else if (row == "35")
+                {
+                    fasum += 1;
+                }
+                else if (row == "45")
+                {
+                    fasum += 1;
+                }
+                else if (row == "50")
+                {
+                    fasum += 1;
+                }
+                else if (row == "51")
+                {
+                    fasum += 1;
+                }
+                else if (row == "52")
+                {
+                    fasum += 1;
+                }
+                else if (row == "53")
+                {
+                    fasum += 1;
+                }
+                else if (row == "54")
+                {
+                    fasum += 1;
+                }
+                else if (row == "55")
+                {
+                    fasum += 2;
+                }
+                else if (row == "56")
+                {
+                    fasum += 1;
+                }
+                else if (row == "57")
+                {
+                    fasum += 1;
+                }
+                else if (row == "58")
+                {
+                    fasum += 1;
+                }
+                else if (row == "59")
+                {
+                    fasum += 1;
+                }
+                else if (row == "65")
+                {
+                    fasum += 1;
+                }
+                else if (row == "75")
+                {
+                    fasum += 1;
+                }
+                else if (row == "85")
+                {
+                    fasum += 1;
+                }
+                else if (row == "95")
+                {
+                    fasum += 1;
+                }
+                else
+                {
+                    fasum += 0;
+                }
+            }
+
+            sr1.Close();
+
+            sw_sum.WriteLine("The sum of all the numbers in the file: " + sum);
+            sw_sum.WriteLine("The sum of all the singular fives in the file: " + fsum);
+            sw_sum.WriteLine("The sum of all the fives in the file: " + fasum);
 
             Console.WriteLine("File length: " + fs.Length / 4); 
             Console.WriteLine("The sum of all the numbers in the file: " + sum);
             Console.WriteLine("The sum of all the singular fives in the file: " + fsum);
+            Console.WriteLine("The sum of all the fives in the file: " + fasum);
 
             br.Close();
             sw_sum.Close();
-            sr.Close();
 
             Console.ReadLine();
         }
